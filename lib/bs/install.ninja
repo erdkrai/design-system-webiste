@@ -1,0 +1,28 @@
+rescript = 1
+rule cp
+  command = cp $i $out
+rule touch
+ command = touch $out
+o App.cmi : cp ../bs/src/App.cmi
+o App.cmj : cp ../bs/src/App.cmj
+o App.cmt : cp ../bs/src/App.cmt
+o App.res : cp ../../src/App.res
+o App.resi : cp ../../src/App.resi
+o App.cmti : cp ../bs/src/App.cmti
+o Main.cmi : cp ../bs/src/Main.cmi
+o Main.cmj : cp ../bs/src/Main.cmj
+o Main.cmt : cp ../bs/src/Main.cmt
+o Main.res : cp ../../src/Main.res
+o Button.cmi : cp ../bs/src/components/Button.cmi
+o Button.cmj : cp ../bs/src/components/Button.cmj
+o Button.cmt : cp ../bs/src/components/Button.cmt
+o Button.res : cp ../../src/components/Button.res
+o UIUtils.cmi : cp ../bs/src/components/UIUtils.cmi
+o UIUtils.cmj : cp ../bs/src/components/UIUtils.cmj
+o UIUtils.cmt : cp ../bs/src/components/UIUtils.cmt
+o UIUtils.res : cp ../../src/components/UIUtils.res
+o ButtonsDemo.cmi : cp ../bs/src/demo/ButtonsDemo.cmi
+o ButtonsDemo.cmj : cp ../bs/src/demo/ButtonsDemo.cmj
+o ButtonsDemo.cmt : cp ../bs/src/demo/ButtonsDemo.cmt
+o ButtonsDemo.res : cp ../../src/demo/ButtonsDemo.res
+build install.stamp : touch App.cmi App.cmj Main.cmi Main.cmj Button.cmi Button.cmj UIUtils.cmi UIUtils.cmj ButtonsDemo.cmi ButtonsDemo.cmj 

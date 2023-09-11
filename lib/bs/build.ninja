@@ -1,0 +1,37 @@
+rescript = 1
+g_finger := /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/react/lib/ocaml/install.stamp
+g_finger := /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/core/lib/ocaml/install.stamp
+rule astj
+  command = /Users/dkrai/Desktop/design-system-webiste/node_modules/rescript/darwin/bsc.exe  -bs-v 10.1.4 -bs-jsx 4 -bs-jsx-mode automatic -open RescriptCore -absname -bs-ast -o $out $i
+o src/App.ast : astj ../../src/App.res
+rule deps
+  command = /Users/dkrai/Desktop/design-system-webiste/node_modules/rescript/darwin/bsb_helper.exe -hash 64545e5a759ca1ae984677dd6d24f4c9 $in
+  restat = 1
+o src/App.d : deps src/App.ast src/App.iast
+o src/App.iast : astj ../../src/App.resi
+rule mi
+  command = /Users/dkrai/Desktop/design-system-webiste/node_modules/rescript/darwin/bsc.exe -I src/demo -I src/components -I src/assets -I src -I /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/react/lib/ocaml -I /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/core/lib/ocaml -open RescriptCore  -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/App.cmi : mi src/App.iast
+rule mj
+  command = /Users/dkrai/Desktop/design-system-webiste/node_modules/rescript/darwin/bsc.exe -bs-read-cmi -I src/demo -I src/components -I src/assets -I src -I /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/react/lib/ocaml -I /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/core/lib/ocaml -open RescriptCore  -bs-package-name dashboard-components-library -bs-package-output es6:$in_d:.bs.mjs -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/App.cmj ../../src/App.bs.mjs : mj src/App.ast src/App.cmi
+o src/Main.ast : astj ../../src/Main.res
+o src/Main.d : deps src/Main.ast
+rule mij
+  command = /Users/dkrai/Desktop/design-system-webiste/node_modules/rescript/darwin/bsc.exe -I src/demo -I src/components -I src/assets -I src -I /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/react/lib/ocaml -I /Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/core/lib/ocaml -open RescriptCore  -bs-package-name dashboard-components-library -bs-package-output es6:$in_d:.bs.mjs -bs-v $g_finger $i
+  dyndep = 1
+  restat = 1
+o src/Main.cmj src/Main.cmi ../../src/Main.bs.mjs : mij src/Main.ast
+o src/components/Button.ast : astj ../../src/components/Button.res
+o src/components/Button.d : deps src/components/Button.ast
+o src/components/Button.cmj src/components/Button.cmi ../../src/components/Button.bs.mjs : mij src/components/Button.ast
+o src/components/UIUtils.ast : astj ../../src/components/UIUtils.res
+o src/components/UIUtils.d : deps src/components/UIUtils.ast
+o src/components/UIUtils.cmj src/components/UIUtils.cmi ../../src/components/UIUtils.bs.mjs : mij src/components/UIUtils.ast
+o src/demo/ButtonsDemo.ast : astj ../../src/demo/ButtonsDemo.res
+o src/demo/ButtonsDemo.d : deps src/demo/ButtonsDemo.ast
+o src/demo/ButtonsDemo.cmj src/demo/ButtonsDemo.cmi ../../src/demo/ButtonsDemo.bs.mjs : mij src/demo/ButtonsDemo.ast

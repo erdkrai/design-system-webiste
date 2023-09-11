@@ -1,0 +1,1 @@
+{ "dirs" : [ "src" , "src/assets" , "src/components" , "src/demo" ] , "pkgs" : [ [ "@rescript/react" , "/Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/react" ] , [ "@rescript/core" , "/Users/dkrai/Desktop/design-system-webiste/node_modules/@rescript/core" ] ] , "generated" : [] }
